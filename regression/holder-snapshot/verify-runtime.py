@@ -69,6 +69,7 @@ for container in ['barrel', 'chest', 'double']:
     pass_case('real-client item transfer and snapshot count: ' + container)
 
 command('srprobe reset', 'RESET_DONE')
+command('srprobe clearprofile', 'PROFILE_CLEARED')
 post('send', command='skins')
 time.sleep(.6)
 assert 'MENU_SLOT 20 type=BOOKSHELF' in menu()

@@ -105,6 +105,14 @@ public final class SkinHolderProbe extends JavaPlugin {
                         UUID id = player.getUniqueId();
                         Bukkit.getAsyncScheduler().runNow(this, task -> getLogger().info("PROFILE_REPORT skin=" + SkinsRestorerProvider.get().getPlayerStorage().getSkinIdOfPlayer(id)));
                     }
+                    case "clearprofile" -> {
+                        UUID id = player.getUniqueId();
+                        Bukkit.getAsyncScheduler().runNow(this, task -> {
+                            SkinsRestorerProvider.get().getPlayerStorage().removeSkinIdOfPlayer(id);
+                            require(SkinsRestorerProvider.get().getPlayerStorage().getSkinIdOfPlayer(id).isEmpty(), "Test profile not cleared");
+                            getLogger().info("PROFILE_CLEARED");
+                        });
+                    }
                     case "reset" -> { player.closeInventory(); player.setItemOnCursor(null); player.getInventory().clear(); reset.invoke(null); getLogger().info("RESET_DONE"); }
                     default -> throw new IllegalArgumentException(Arrays.toString(args));
                 }
