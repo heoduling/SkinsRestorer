@@ -19,6 +19,7 @@ package net.skinsrestorer.bukkit.listener;
 
 import lombok.RequiredArgsConstructor;
 import net.skinsrestorer.bukkit.gui.BukkitGUIHolder;
+import net.skinsrestorer.bukkit.paper.PaperUtil;
 import net.skinsrestorer.shared.log.SRLogger;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -35,7 +36,7 @@ public class InventoryListener implements Listener {
     @EventHandler(ignoreCancelled = true)
     public void onInventoryClick(InventoryClickEvent event) {
         Inventory topInventory = event.getView().getTopInventory();
-        InventoryHolder holder = topInventory.getHolder();
+        InventoryHolder holder = PaperUtil.getInventoryHolder(topInventory);
         if (holder instanceof BukkitGUIHolder guiHolder) {
             if (isInTop(topInventory, event.getRawSlot())) { // Only handle if there was a click in the top inventory
                 try {

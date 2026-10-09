@@ -20,10 +20,17 @@ package net.skinsrestorer.bukkit.paper;
 import io.papermc.paper.ServerBuildInfo;
 import org.bukkit.Server;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 
 import java.util.Optional;
 
 public final class PaperUtil {
+    public static InventoryHolder getInventoryHolder(Inventory inventory) {
+        // Menu identity checks do not need a snapshot of a block container and its items.
+        return inventory.getHolder(false);
+    }
+
     @SuppressWarnings("removal")
     public static Optional<YamlConfiguration> getPaperConfig(Server server) {
         try {
