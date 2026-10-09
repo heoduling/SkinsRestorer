@@ -1,0 +1,17 @@
+{
+  "phase": "fixed",
+  "checks": 144,
+  "client_checks": 9,
+  "passed": [
+    "144 core, ordinary-container and custom-holder event checks",
+    "real-client item transfer and snapshot count: barrel",
+    "real-client item transfer and snapshot count: chest",
+    "real-client item transfer and snapshot count: double",
+    "real /skins selection menu",
+    "real custom-skin first page: 36 entries",
+    "next page: remaining 4 entries",
+    "previous page",
+    "skin selection persisted and closed menu",
+    "close and reopen"
+  ]
+}
