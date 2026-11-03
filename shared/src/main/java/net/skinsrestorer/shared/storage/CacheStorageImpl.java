@@ -37,6 +37,7 @@ import net.skinsrestorer.shared.utils.ValidationUtil;
 import javax.inject.Inject;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 @RequiredArgsConstructor(onConstructor_ = @Inject)
 public class CacheStorageImpl implements CacheStorage {
@@ -93,6 +94,6 @@ public class CacheStorageImpl implements CacheStorage {
 
     private boolean isValidUUIDTimestamp(long epochSecond) {
         int expiresAfter = settings.getProperty(StorageConfig.UUID_EXPIRES_AFTER);
-        return expiresAfter <= 0 || SRHelpers.getEpochSecond() - epochSecond <= expiresAfter;
+        return expiresAfter <= 0 || SRHelpers.getEpochSecond() - epochSecond <= TimeUnit.MINUTES.toSeconds(expiresAfter);
     }
 }
