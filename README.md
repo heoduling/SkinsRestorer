@@ -6,6 +6,12 @@
 
 # SkinsRestorer
 
+### Folia 维护版 15.12.6-2
+
+本分支修复 UUID 缓存把“分钟”当作“秒”处理的问题：配置 `storage.uuidExpiresAfter: 60` 时，缓存按 60 分钟有效。保留 15.12.6-1 的容器 Holder 快照修复；玩家已选皮肤、缓存文件格式与现有配置无需迁移。
+
+已完成旧版失败对照、17 项新增回归测试、完整干净构建，以及隔离 Shiroha 的升级和重启读取验证。详细结果、测试边界和升级方法见 [UUID 缓存修复验证报告](UUID-CACHE-REGRESSION.md)。
+
 **🎨 The most popular skin plugin for Minecraft**
 
 ## 📥 How to install? / Installation / Setup
